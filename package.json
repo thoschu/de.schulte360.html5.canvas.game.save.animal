@@ -1,0 +1,19 @@
+{
+  "name": "de.schulte360.html5.canvas.game.save.animal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thoschu/de.schulte360.html5.canvas.game.save.animal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thoschu/de.schulte360.html5.canvas.game.save.animal/issues"
+  },
+  "homepage": "https://github.com/thoschu/de.schulte360.html5.canvas.game.save.animal#readme"
+}

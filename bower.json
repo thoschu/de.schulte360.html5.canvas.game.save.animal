@@ -1,0 +1,17 @@
+{
+  "name": "de.schulte360.html5.canvas.game.save.animal",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Tom <thoschulte@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/thoschu/de.schulte360.html5.canvas.game.save.animal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
