@@ -16,6 +16,32 @@
             body {
                 font-family: 'Cabin Sketch', cursive;
             }
+
+            canvas, img {
+                image-rendering: optimizeQuality;
+                image-rendering: -moz-crisp-edges;
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: optimize-contrast;
+                -ms-interpolation-mode: nearest-neighbor;
+            }
+
+            canvas#area {
+                border: 0 solid black;
+                background: url(img/street.png);
+                background-size: 100% 100%;
+            }
+
+            #gameover {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            #catched {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
         </style>
         <!--
         <link rel="stylesheet" href="css/styles.css?v=1.0">
@@ -40,18 +66,24 @@
         <main class="container-fluid">
             <section id="game">
                 <div class="row">
-                    <canvas id="area"></canvas>
+                    <div class="col-sm">
+                        <canvas id="area" class="d-block mx-auto" width='1000px' height='600px'></canvas>
+                    </div>
                 </div>
             </section>
             <section id="gameover">
                 <div class="row">
                     <div class="col-sm">
-
+                        <!--<img src="..." class="img-fluid" alt="Responsive image">-->
                     </div>
                 </div>
             </section>
             <section id="catched">
-                <div class="row"></div>
+                <div class="row">
+                    <div class="col-sm">
+                        <!--<img src="..." class="img-fluid" alt="Responsive image">-->
+                    </div>
+                </div>
             </section>
         </main>
         <footer class="container">
@@ -68,7 +100,105 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+        <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+
         <script src="https://use.fontawesome.com/7c7e62cd08.js"></script>
         <!--<script src="js/scripts.js"></script>-->
+        <script>
+            var x = 730, y = 525,
+                a = Math.floor(Math.random() * 600) + 1 , b = 0;
+
+            $( document ).ready(function() {
+
+                var canvas = document.getElementById("area"),
+                    context = canvas.getContext('2d'),
+                    img0 = new Image(),
+                    img1 = new Image(),
+                    img2 = new Image(),
+                    img3 = new Image(),
+                    img4 = new Image(),
+                    img5 = new Image(),
+                    img6 = new Image(),
+                    img7 = new Image();
+
+                img0.src = 'img/dog.png';
+                img0.onload = function() {
+                    context.drawImage(img0, a, b, img0.width / 2, img0.height / 2);
+                };
+
+                img1.src = 'img/car_blue_left.png';
+                img1.onload = function() {
+                    context.drawImage(img1, 0, 35);
+                };
+
+                img2.src = 'img/car_yellow.png';
+                img2.onload = function() {
+                    context.drawImage(img2, 250, 135, img0.width / 1.5, img0.height / 1.5);
+                };
+
+                img3.src = 'img/mbike_left.png';
+                img3.onload = function() {
+                    context.drawImage(img3, 550, 195);
+                };
+
+                img4.src = 'img/pickup.png';
+                img4.onload = function() {
+                    context.drawImage(img4, 650, 275);
+                };
+
+                img5.src = 'img/truck_right.png';
+                img5.onload = function() {
+                    context.drawImage(img5, 330, 355);
+                };
+
+                img6.src = 'img/bus.png';
+                img6.onload = function() {
+                    context.drawImage(img6, 730, 435);
+                };
+
+                img7.src = 'img/spider_bottom.png';
+                img7.onload = function() {
+                    context.drawImage(img7, x, y, img7.width / 3, img7.height / 3);
+                };
+
+
+                $(document).keydown(function (event) {
+                    event.preventDefault();
+                    switch (event.keyCode) {
+                        case 37:
+                            x = x - 45;
+                            break;
+                        case 38:
+                            y = y - 45;
+                            break;
+                        case 39:
+                            x = x + 45;
+                            break;
+                        case 40:
+                            y = y + 45;
+                            break;
+                        default:
+                            break;
+                    }
+                });
+
+                var main = function() {
+                    context.clearRect(0, 0, 1000, 600);
+                    context.drawImage(img0, a, b, img0.width / 2, img0.height / 2);
+                    context.drawImage(img1, 0, 35);
+                    context.drawImage(img2, 250, 135, img0.width / 1.5, img0.height / 1.5);
+                    context.drawImage(img3, 550, 195);
+                    context.drawImage(img4, 650, 275);
+                    context.drawImage(img5, 330, 355);
+                    context.drawImage(img6, 730, 435);
+                    context.drawImage(img7, x, y, img7.width / 3, img7.height / 3)
+                };
+
+                var spiel = window.setInterval(main, 250);
+
+            });
+        </script>
     </body>
 </html>
