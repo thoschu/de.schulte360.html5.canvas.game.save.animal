@@ -168,15 +168,24 @@
                     event.preventDefault();
                     switch (event.keyCode) {
                         case 37:
-                            x = x - 45;
+                            if(x > 525 || x < 0) {
+                                return false;
+                            } else {
+                                x = x - 45;
+                                return false;
+                            }
+
                             break;
                         case 38:
+                            if(true) {}
                             y = y - 45;
                             break;
                         case 39:
+                            if(true) {}
                             x = x + 45;
                             break;
                         case 40:
+                            if(true) {}
                             y = y + 45;
                             break;
                         default:
