@@ -149,7 +149,7 @@
                     context.drawImage(img3, i3x, i3y);
                 };
 
-                img4.src = 'img/pickup_right.png';
+                img4.src = 'img/pickup_left.png';
                 img4.onload = function() {
                     context.drawImage(img4, i4x, i4y);
                 };
@@ -208,9 +208,6 @@
                         default:
                             break;
                     }
-
-                    //console.log(x);
-                    //console.log(y);
                 });
 
                 var main = function() {
@@ -255,8 +252,10 @@
                 var to3 = setInterval(function () {
                     if (i3x > 1010) {
                         toRight2 = false;
+                        img3.src = 'img/mbike_left.png';
                     } else if (i3x < -150) {
                         toRight3 = true;
+                        img3.src = 'img/mbike_right.png';
                     }
                     i3x = toRight3 ? i3x + 1 : i3x - 1;
                 }, 100);
@@ -265,8 +264,10 @@
                 var to4 = setInterval(function () {
                     if (i4x > 1010) {
                         toRight4 = false;
+                        img4.src = 'img/pickup_left.png';
                     } else if (i4x < -150) {
                         toRight4 = true;
+                        img4.src = 'img/pickup_right.png';
                     }
                     i4x = toRight4 ? i4x + 1 : i4x - 1;
 
@@ -277,18 +278,22 @@
                 var to5 = setInterval(function () {
                     if (i5x > 1010) {
                         toRight5 = false;
+                        img5.src = 'img/truck_left.png';
                     } else if (i5x < -150) {
                         toRight5 = true;
+                        img5.src = 'img/truck_right.png';
                     }
-                    i5x = toRight5 ? i5x + 10 : i5x - 10;
+                    i5x = toRight5 ? i5x - 10 : i5x + 10;
                 }, 1000);
 
                 var toRight6;
                 var to6 = setInterval(function () {
                     if (i6x > 1010) {
                         toRight6 = false;
+                        img6.src = 'img/bus_left.png';
                     } else if (i6x < -150) {
                         toRight6 = true;
+                        img6.src = 'img/bus_right.png';
                     }
                     i6x = toRight6 ? i6x + 10 : i6x - 10;
                 }, 250);
