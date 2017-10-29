@@ -100,10 +100,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-
         <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
-
         <script src="https://use.fontawesome.com/7c7e62cd08.js"></script>
         <!--<script src="js/scripts.js"></script>-->
         <script>
@@ -250,15 +247,15 @@
 
                 var toRight3;
                 var to3 = setInterval(function () {
-                    if (i3x > 1010) {
-                        toRight2 = false;
+                    if (i3x > 1090) {
+                        toRight3 = false;
                         img3.src = 'img/mbike_left.png';
                     } else if (i3x < -150) {
                         toRight3 = true;
                         img3.src = 'img/mbike_right.png';
                     }
                     i3x = toRight3 ? i3x + 1 : i3x - 1;
-                }, 100);
+                }, 5);
 
                 var toRight4;
                 var to4 = setInterval(function () {
@@ -269,7 +266,7 @@
                         toRight4 = true;
                         img4.src = 'img/pickup_right.png';
                     }
-                    i4x = toRight4 ? i4x + 1 : i4x - 1;
+                    i4x = toRight4 ? i4x + 2 : i4x - 2;
 
 
                 }, 500);
@@ -284,6 +281,7 @@
                         img5.src = 'img/truck_right.png';
                     }
                     i5x = toRight5 ? i5x - 10 : i5x + 10;
+                    console.log(i5x);
                 }, 1000);
 
                 var toRight6;
