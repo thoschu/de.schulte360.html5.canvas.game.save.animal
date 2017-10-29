@@ -108,7 +108,13 @@
         <!--<script src="js/scripts.js"></script>-->
         <script>
             var x = 730, y = 525,
-                a = Math.floor(Math.random() * 600) + 1 , b = 0;
+                a = Math.floor(Math.random() * 600) + 1 , b = 0,
+                i1x = 0, i1y = 35,
+                i2x = 250, i2y = 135,
+                i3x = 550, i3y = 195,
+                i4x = 650, i4y = 275,
+                i5x = 350, i5y = 355,
+                i6x = 730, i6y = 435;
 
             $( document ).ready(function() {
 
@@ -130,32 +136,32 @@
 
                 img1.src = 'img/car_blue_left.png';
                 img1.onload = function() {
-                    context.drawImage(img1, 0, 35);
+                    context.drawImage(img1, i1x, i1y);
                 };
 
-                img2.src = 'img/car_yellow.png';
+                img2.src = 'img/car_yellow_left.png';
                 img2.onload = function() {
-                    context.drawImage(img2, 250, 135, img0.width / 1.5, img0.height / 1.5);
+                    context.drawImage(img2, i2x, i2y, img0.width / 1.5, img0.height / 1.5);
                 };
 
                 img3.src = 'img/mbike_left.png';
                 img3.onload = function() {
-                    context.drawImage(img3, 550, 195);
+                    context.drawImage(img3, i3x, i3y);
                 };
 
-                img4.src = 'img/pickup.png';
+                img4.src = 'img/pickup_right.png';
                 img4.onload = function() {
-                    context.drawImage(img4, 650, 275);
+                    context.drawImage(img4, i4x, i4y);
                 };
 
                 img5.src = 'img/truck_right.png';
                 img5.onload = function() {
-                    context.drawImage(img5, 330, 355);
+                    context.drawImage(img5, i5x, i5y);
                 };
 
-                img6.src = 'img/bus.png';
+                img6.src = 'img/bus_left.png';
                 img6.onload = function() {
-                    context.drawImage(img6, 730, 435);
+                    context.drawImage(img6, i6x, i6y);
                 };
 
                 img7.src = 'img/spider_bottom.png';
@@ -166,46 +172,130 @@
 
                 $(document).keydown(function (event) {
                     event.preventDefault();
+                    //console.log(event.keyCode);
                     switch (event.keyCode) {
                         case 37:
-                            if(x > 525 || x < 0) {
+                            if (x <= 10) {
                                 return false;
                             } else {
                                 x = x - 45;
                                 return false;
                             }
-
                             break;
                         case 38:
-                            if(true) {}
-                            y = y - 45;
+                            if (y <= -15) {
+                                return false;
+                            } else {
+                                y = y - 45;
+                                return false;
+                            }
                             break;
                         case 39:
-                            if(true) {}
-                            x = x + 45;
+                            if (x >= 910) {
+                                return false;
+                            } else {
+                                x = x + 45;
+                                return false;
+                            }
                             break;
                         case 40:
-                            if(true) {}
-                            y = y + 45;
+                            if (y >= 525) {
+                                return false;
+                            } else {
+                                y = y + 45;
+                            }
                             break;
                         default:
                             break;
                     }
+
+                    //console.log(x);
+                    //console.log(y);
                 });
 
                 var main = function() {
                     context.clearRect(0, 0, 1000, 600);
                     context.drawImage(img0, a, b, img0.width / 2, img0.height / 2);
-                    context.drawImage(img1, 0, 35);
-                    context.drawImage(img2, 250, 135, img0.width / 1.5, img0.height / 1.5);
-                    context.drawImage(img3, 550, 195);
-                    context.drawImage(img4, 650, 275);
-                    context.drawImage(img5, 330, 355);
-                    context.drawImage(img6, 730, 435);
+                    context.drawImage(img1, i1x, i1y);
+                    context.drawImage(img2, i2x, i2y, img0.width / 1.5, img0.height / 1.5);
+                    context.drawImage(img3, i3x, i3y);
+                    context.drawImage(img4, i4x, i4y);
+                    context.drawImage(img5, i5x, i5y);
+                    context.drawImage(img6, i6x, i6y);
                     context.drawImage(img7, x, y, img7.width / 3, img7.height / 3)
                 };
 
                 var spiel = window.setInterval(main, 250);
+
+                var toRight1;
+                var to1 = setInterval(function () {
+                    if (i1x > 1010) {
+                        toRight1 = false;
+                        img1.src = 'img/car_blue_left.png';
+                    } else if (i1x < -150) {
+                        toRight1 = true;
+                        img1.src = 'img/car_blue_right.png';
+                    }
+                    i1x = toRight1 ? i1x + 2 : i1x - 2;
+                }, 10);
+
+                var toRight2;
+                var to2 = setInterval(function () {
+                    if (i2x > 1020) {
+                        toRight2 = false;
+                        img2.src = 'img/car_yellow_left.png';
+                    } else if (i2x < -150) {
+                        toRight2 = true;
+                        img2.src = 'img/car_yellow_right.png';
+                    }
+                    i2x = toRight2 ? i2x + 1 : i2x - 1;
+                }, 40);
+
+                var toRight3;
+                var to3 = setInterval(function () {
+                    if (i3x > 1010) {
+                        toRight2 = false;
+                    } else if (i3x < -150) {
+                        toRight3 = true;
+                    }
+                    i3x = toRight3 ? i3x + 1 : i3x - 1;
+                }, 100);
+
+                var toRight4;
+                var to4 = setInterval(function () {
+                    if (i4x > 1010) {
+                        toRight4 = false;
+                    } else if (i4x < -150) {
+                        toRight4 = true;
+                    }
+                    i4x = toRight4 ? i4x + 1 : i4x - 1;
+
+
+                }, 500);
+
+                var toRight5;
+                var to5 = setInterval(function () {
+                    if (i5x > 1010) {
+                        toRight5 = false;
+                    } else if (i5x < -150) {
+                        toRight5 = true;
+                    }
+                    i5x = toRight5 ? i5x + 10 : i5x - 10;
+                }, 1000);
+
+                var toRight6;
+                var to6 = setInterval(function () {
+                    if (i6x > 1010) {
+                        toRight6 = false;
+                    } else if (i6x < -150) {
+                        toRight6 = true;
+                    }
+                    i6x = toRight6 ? i6x + 10 : i6x - 10;
+                }, 250);
+
+
+
+
 
             });
         </script>
