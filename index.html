@@ -114,7 +114,6 @@
                 i6x = 730, i6y = 435;
 
             $( document ).ready(function() {
-
                 var canvas = document.getElementById("area"),
                     context = canvas.getContext('2d'),
                     img0 = new Image(),
@@ -125,6 +124,85 @@
                     img5 = new Image(),
                     img6 = new Image(),
                     img7 = new Image();
+
+                var toRight1;
+                var to1 = setInterval(function () {
+                    if (i1x > 1010) {
+                        toRight1 = false;
+                        img1.src = 'img/pickup_left.png';
+                    } else if (i1x < -150) {
+                        toRight1 = true;
+                        img1.src = 'img/pickup_right.png';
+                    }
+                    i1x = toRight1 ? i1x + 2 : i1x - 2;
+                }, 10);
+
+                var toRight2;
+                var to2 = setInterval(function () {
+                    if (i2x > 1020) {
+                        toRight2 = false;
+                        img2.src = 'img/car_yellow_left.png';
+                    } else if (i2x < -150) {
+                        toRight2 = true;
+                        img2.src = 'img/car_yellow_right.png';
+                    }
+                    i2x = toRight2 ? i2x + 1 : i2x - 1;
+                }, 40);
+
+                var toRight3;
+                var to3 = setInterval(function () {
+                    if (i3x > 1090) {
+                        toRight3 = false;
+                        img3.src = 'img/mbike_left.png';
+                    } else if (i3x < -150) {
+                        toRight3 = true;
+                        img3.src = 'img/mbike_right.png';
+                    }
+                    i3x = toRight3 ? i3x + 1 : i3x - 1;
+                }, 5);
+
+                var toRight4;
+                var to4 = setInterval(function () {
+                    if (i4x > 1010) {
+                        toRight4 = false;
+                        img4.src = 'img/car_green_left.png';
+                    } else if (i4x < -150) {
+                        toRight4 = true;
+                        img4.src = 'img/car_green_right.png';
+                    }
+                    i4x = toRight4 ? i4x + 2 : i4x - 2;
+
+
+                }, 500);
+
+                var toRight5;
+                var to5 = setInterval(function () {
+
+                    console.log(i5x);
+                    console.log(i5x > 1010);
+
+                    if (i5x > 1010) {
+                        toRight5 = true;
+                        img5.src = 'img/truck_left.png';
+                    } else if (i5x < -150) {
+                        toRight5 = false;
+                        img5.src = 'img/truck_right.png';
+                    }
+                    i5x = toRight5 ? i5x - 5 : i5x + 5;
+                    console.log(i5x);
+                }, 1000);
+
+                var toRight6;
+                var to6 = setInterval(function () {
+                    if (i6x > 1010) {
+                        toRight6 = false;
+                        img6.src = 'img/bus_left.png';
+                    } else if (i6x < -150) {
+                        toRight6 = true;
+                        img6.src = 'img/bus_right.png';
+                    }
+                    i6x = toRight6 ? i6x + 10 : i6x - 10;
+                }, 250);
 
                 img0.src = 'img/dog.png';
                 img0.onload = function() {
@@ -219,81 +297,6 @@
                 };
 
                 var spiel = window.setInterval(main, 250);
-
-                var toRight1;
-                var to1 = setInterval(function () {
-                    if (i1x > 1010) {
-                        toRight1 = false;
-                        img1.src = 'img/pickup_left.png';
-                    } else if (i1x < -150) {
-                        toRight1 = true;
-                        img1.src = 'img/pickup_right.png';
-                    }
-                    i1x = toRight1 ? i1x + 2 : i1x - 2;
-                }, 10);
-
-                var toRight2;
-                var to2 = setInterval(function () {
-                    if (i2x > 1020) {
-                        toRight2 = false;
-                        img2.src = 'img/car_yellow_left.png';
-                    } else if (i2x < -150) {
-                        toRight2 = true;
-                        img2.src = 'img/car_yellow_right.png';
-                    }
-                    i2x = toRight2 ? i2x + 1 : i2x - 1;
-                }, 40);
-
-                var toRight3;
-                var to3 = setInterval(function () {
-                    if (i3x > 1090) {
-                        toRight3 = false;
-                        img3.src = 'img/mbike_left.png';
-                    } else if (i3x < -150) {
-                        toRight3 = true;
-                        img3.src = 'img/mbike_right.png';
-                    }
-                    i3x = toRight3 ? i3x + 1 : i3x - 1;
-                }, 5);
-
-                var toRight4;
-                var to4 = setInterval(function () {
-                    if (i4x > 1010) {
-                        toRight4 = false;
-                        img4.src = 'img/car_green_left.png';
-                    } else if (i4x < -150) {
-                        toRight4 = true;
-                        img4.src = 'img/car_green_right.png';
-                    }
-                    i4x = toRight4 ? i4x + 2 : i4x - 2;
-
-
-                }, 500);
-
-                var toRight5;
-                var to5 = setInterval(function () {
-                    if (i5x > 1010) {
-                        toRight5 = false;
-                        img5.src = 'img/truck_left.png';
-                    } else if (i5x < -150) {
-                        toRight5 = true;
-                        img5.src = 'img/truck_right.png';
-                    }
-                    i5x = toRight5 ? i5x - 1 : i5x + 1;
-                    console.log(i5x);
-                }, 1000);
-
-                var toRight6;
-                var to6 = setInterval(function () {
-                    if (i6x > 1010) {
-                        toRight6 = false;
-                        img6.src = 'img/bus_left.png';
-                    } else if (i6x < -150) {
-                        toRight6 = true;
-                        img6.src = 'img/bus_right.png';
-                    }
-                    i6x = toRight6 ? i6x + 10 : i6x - 10;
-                }, 250);
             });
         </script>
     </body>
