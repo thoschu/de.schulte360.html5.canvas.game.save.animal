@@ -131,7 +131,7 @@
                     context.drawImage(img0, a, b, img0.width / 2, img0.height / 2);
                 };
 
-                img1.src = 'img/car_blue_left.png';
+                img1.src = 'img/pickup_left.png';
                 img1.onload = function() {
                     context.drawImage(img1, i1x, i1y);
                 };
@@ -146,7 +146,7 @@
                     context.drawImage(img3, i3x, i3y);
                 };
 
-                img4.src = 'img/pickup_left.png';
+                img4.src = 'img/car_green_left.png';
                 img4.onload = function() {
                     context.drawImage(img4, i4x, i4y);
                 };
@@ -165,7 +165,6 @@
                 img7.onload = function() {
                     context.drawImage(img7, x, y, img7.width / 3, img7.height / 3);
                 };
-
 
                 $(document).keydown(function (event) {
                     event.preventDefault();
@@ -225,10 +224,10 @@
                 var to1 = setInterval(function () {
                     if (i1x > 1010) {
                         toRight1 = false;
-                        img1.src = 'img/car_blue_left.png';
+                        img1.src = 'img/pickup_left.png';
                     } else if (i1x < -150) {
                         toRight1 = true;
-                        img1.src = 'img/car_blue_right.png';
+                        img1.src = 'img/pickup_right.png';
                     }
                     i1x = toRight1 ? i1x + 2 : i1x - 2;
                 }, 10);
@@ -261,10 +260,10 @@
                 var to4 = setInterval(function () {
                     if (i4x > 1010) {
                         toRight4 = false;
-                        img4.src = 'img/pickup_left.png';
+                        img4.src = 'img/car_green_left.png';
                     } else if (i4x < -150) {
                         toRight4 = true;
-                        img4.src = 'img/pickup_right.png';
+                        img4.src = 'img/car_green_right.png';
                     }
                     i4x = toRight4 ? i4x + 2 : i4x - 2;
 
@@ -295,11 +294,6 @@
                     }
                     i6x = toRight6 ? i6x + 10 : i6x - 10;
                 }, 250);
-
-
-
-
-
             });
         </script>
     </body>
