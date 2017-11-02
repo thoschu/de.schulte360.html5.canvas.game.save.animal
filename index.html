@@ -110,7 +110,7 @@
                 i2x = 250, i2y = 135,
                 i3x = 550, i3y = 195,
                 i4x = 650, i4y = 275,
-                i5x = 350, i5y = 355,
+                i5x = 850, i5y = 355,
                 i6x = 730, i6y = 435;
 
             $( document ).ready(function() {
@@ -279,7 +279,7 @@
                         toRight5 = true;
                         img5.src = 'img/truck_right.png';
                     }
-                    i5x = toRight5 ? i5x - 10 : i5x + 10;
+                    i5x = toRight5 ? i5x - 1 : i5x + 1;
                     console.log(i5x);
                 }, 1000);
 
