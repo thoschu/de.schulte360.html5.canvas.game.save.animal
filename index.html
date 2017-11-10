@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin+Sketch">
+
         <!--[if lt IE 9]>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
         <![endif]-->
@@ -31,17 +32,6 @@
                 background-size: 100% 100%;
             }
 
-            #gameover {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-
-            #catched {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
         </style>
         <!--
         <link rel="stylesheet" href="css/styles.css?v=1.0">
@@ -71,20 +61,6 @@
                     </div>
                 </div>
             </section>
-            <section id="gameover">
-                <div class="row">
-                    <div class="col-sm">
-                        <!--<img src="..." class="img-fluid" alt="Responsive image">-->
-                    </div>
-                </div>
-            </section>
-            <section id="catched">
-                <div class="row">
-                    <div class="col-sm">
-                        <!--<img src="..." class="img-fluid" alt="Responsive image">-->
-                    </div>
-                </div>
-            </section>
         </main>
         <footer class="container">
             <section id="copyright">
@@ -97,6 +73,23 @@
                 </div>
             </section>
         </footer>
+        <aside class="container">
+            <div id="startModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>One fine body&hellip;</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Start</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div>
+            </div>
+        </aside>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -114,6 +107,10 @@
                 i6x = 730, i6y = 435;
 
             $( document ).ready(function() {
+
+                $('#startModal').modal('show');
+
+
                 var canvas = document.getElementById("area"),
                     context = canvas.getContext('2d'),
                     img0 = new Image(),
@@ -177,10 +174,6 @@
 
                 var toRight5;
                 var to5 = setInterval(function () {
-
-                    console.log(i5x);
-                    console.log(i5x > 1010);
-
                     if (i5x > 1010) {
                         toRight5 = true;
                         img5.src = 'img/truck_left.png';
@@ -295,7 +288,13 @@
                     context.drawImage(img7, x, y, img7.width / 3, img7.height / 3)
                 };
 
-                var spiel = window.setInterval(main, 250);
+
+
+                $('#startModal').on('hidden.bs.modal', function (e) {
+                    // do something...
+                    var spiel = window.setInterval(main, 250);
+                });
+
             });
         </script>
     </body>
